@@ -11,15 +11,59 @@
 |
 */
 
+/*
+Route::any('/exemplo2',function(){
+
+
+});
+
+Route::match(['get','post'],'/exemplo2',function(){
+
+    return "oi";
+});
+
+*/
+/*
+
+Route::get('produtos-legais',['as' => 'produtos',function(){
+    return 'Produtos';
+
+}]);
+redirect()->route('produtos');
+
+echo route('produtos');die;
+
+
+Route::get('user/{id?}',function($id = null){
+    if($id)
+    return "Ola " . $id;
+    return "Nao possui id";
+
+})->where('id','[0-9]+');
+
+*/
+
+//
+Route::get('category/{category}',function(\CodeCommerce\Category $category){
+
+    return $category->name;
+});
+
+// AREA DA CRIAÇÃO DOS PREFIX ADM
+Route::group(['prefix' => 'admin'],function(){
+    Route::get('categories', 'AdminCategoriesController@index');
+    Route::get('products', 'AdminProductsController@index');
+
+
+
+});
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::get('exemplo', 'WelcomeController@exemplo');
+Route::get('/exemplo', 'WelcomeController@exemplo');
 
 
-Route::get('admin/categories','AdminCategoriesController@index');
-Route::get('admin/products','AdminProductsController@index');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
