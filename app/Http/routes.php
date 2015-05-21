@@ -43,7 +43,24 @@ Route::get('user/{id?}',function($id = null){
 
 */
 
-//
+//Correção do código
+
+
+Route::post('categories/{id}/edit', function() {
+    return 'update';
+});
+Route::get('categories/create', function() {
+    return 'create';
+});
+
+Route::post('products/{id}/edit', function() {
+    return 'update';
+});
+Route::get('products/create', function() {
+    return 'create';
+});
+
+
 Route::get('category/{category}',function(\CodeCommerce\Category $category){
 
     return $category->name;
