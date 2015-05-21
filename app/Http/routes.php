@@ -46,6 +46,8 @@ Route::get('user/{id?}',function($id = null){
 //Correção do código
 
 
+Route::get('categories', 'CategoriesController@index');
+
 Route::post('categories/{id}/edit', function() {
     return 'update';
 });
@@ -59,6 +61,7 @@ Route::post('products/{id}/edit', function() {
 Route::get('products/create', function() {
     return 'create';
 });
+
 
 
 Route::get('category/{category}',function(\CodeCommerce\Category $category){
