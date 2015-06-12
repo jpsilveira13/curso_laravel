@@ -16,9 +16,23 @@ class ProductsController extends Controller {
     public function index(){
         $products = $this->productyModel->all();
 
-        return view('categories.index',compact('categories'));
+        return view('products.index',compact('products'));
 
     }
+
+    // AQUI E A PARTE DA VISÃO QUANDO A PESSOA ENTRA NO LINK SERÁ ENVIADO PARA PAGINA DE CRIAÇÃO
+    public function create(){
+        return view('products.create');
+
+    }
+
+
+    //AQUI VAMOS SALVAR OS PRODUTOS CADASTRADOS PELO CLIENTE :d -->
+    public function store(){
+
+
+    }
+
 
 
 }
