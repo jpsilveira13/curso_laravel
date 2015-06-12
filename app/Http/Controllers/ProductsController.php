@@ -26,10 +26,29 @@ class ProductsController extends Controller {
 
     }
 
+    public function edit($id){
+        $product = $this->productyModel->find($id);
+        return view('products.edit',(compact('product')));
+    }
+
+    public function update(Requests\ProductRequest $request, $id){
+        $this->productyModel->find($id)->update($request->all());
+        return redirect()->route('products');
+
+    }
 
     //AQUI VAMOS SALVAR OS PRODUTOS CADASTRADOS PELO CLIENTE :d -->
-    public function store(){
+    public function store(Requests\ProductRequest $request){
+        $input = $request->all();
+        $product = $this->productyModel->fill($input);
+        $product->save();
+        return redirect()->route('products');
 
+    }
+
+    public function destroy($id){
+        $this->productyModel->find($id)->delete();
+        return redirect()->route('products');
 
     }
 
