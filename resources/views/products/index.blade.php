@@ -13,8 +13,10 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Price</th>
                 <th>Featured</th>
                 <th>Recomend</th>
+                <th>Action</th>
             </tr>
             @foreach($products as $product)
                 <tr>

@@ -1,14 +1,18 @@
 <?php namespace CodeCommerce\Http\Controllers;
 
 use CodeCommerce\Category;
+use CodeCommerce\Product;
 
 class WelcomeController extends Controller {
 
 	private $categories;
-	public function __construct(Category $category)
+    private $products;
+	public function __construct(Category $category, Product $product)
 	{
 		$this->middleware('guest');
         $this->categories = $category;
+        $this->products = $product;
+
 	}
 
 	/**

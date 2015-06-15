@@ -49,7 +49,7 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::get('/exemplo', 'WelcomeController@exemplo');
+
 
 
 Route::controllers([

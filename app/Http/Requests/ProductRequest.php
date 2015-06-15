@@ -11,7 +11,7 @@ class ProductRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return false;
+		return true;
 	}
 
 	/**
@@ -22,9 +22,8 @@ class ProductRequest extends Request {
 	public function rules()
 	{
 		return [
-                'name'           => 'required|5',
-                'description'    => 'required|10',
-                'price'          => 'required'
+            'name' => 'required|min:5',
+            'description' => 'required'
 		];
 	}
 
