@@ -13,8 +13,14 @@
             {!! Form::open(['route'=>['products.update',$product->id],'method'=>'put']) !!}
             <fieldset>
 
-                <legend>Register Product</legend>
-
+                <legend>Edit Product</legend>
+                <!-- Cateogory -->
+                <div class="form-group ">
+                    {!! Form::label('category', 'Category:', ['class' => 'col-lg-2 control-label']) !!}
+                    <div class="col-lg-10 paddingFormProduct">
+                        {!! Form::select('category_id', $categories, $product->category->id, ['class' => 'form-control', 'placeholder' => 'Category']) !!}
+                    </div>
+                </div>
                 <!-- Name -->
                 <div class="form-group ">
                     {!! Form::label('name', 'Name:', ['class' => 'col-lg-2 control-label']) !!}

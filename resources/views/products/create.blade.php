@@ -15,7 +15,16 @@
 
                 <legend>Register Product</legend>
 
+                <!-- Category -->
+
+                <div class="form-group ">
+                    {!! Form::label('category', 'Category:', ['class' => 'col-lg-2 control-label']) !!}
+                    <div class="col-lg-10 paddingFormProduct">
+                        {!! Form::select('category_id', $categories, null, ['class' => 'form-control', 'placeholder' => 'Category']) !!}
+                    </div>
+                </div>
                 <!-- Name -->
+
                 <div class="form-group ">
                     {!! Form::label('name', 'Name:', ['class' => 'col-lg-2 control-label']) !!}
                     <div class="col-lg-10 paddingFormProduct">
@@ -55,6 +64,7 @@
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
                         {!! Form::submit('Add Product', ['class' => 'btn btn-lg btn-info pull-right'] ) !!}
+                        <a
                     </div>
                 </div>
 

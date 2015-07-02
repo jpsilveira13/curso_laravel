@@ -30,4 +30,9 @@ class WelcomeController extends Controller {
     }
 
 
+    public function exemplo2(){
+        return "oiee mundo";
+    }
+
+
 }

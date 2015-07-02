@@ -16,14 +16,14 @@ class ProductTableSeeder extends Seeder{
     public function run(){
         DB::table('products')->truncate();
         $faker = Faker::create();
-        foreach(range(1,15) as $i){
+        foreach(range(1,40) as $i){
             Product::create([
                 'name' => $faker->name(),
                 'description' => $faker->sentence(),
-                'price' =>  $faker->randomFloat($nbMaxDecimals = 2, $min = 1, $max = 9999),
+                'price' =>  $faker->randomNumber(2),
                 'featured' =>  $faker->numberBetween($min = 0, $max=1),
-                'recommend' =>  $faker->numberBetween($min = 0, $max=1)
-
+                'recommend' =>  $faker->numberBetween($min = 0, $max=1),
+                'category_id' => $faker->numberBetween(1,15)
             ]);
 
         }

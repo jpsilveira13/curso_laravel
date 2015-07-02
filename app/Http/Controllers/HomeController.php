@@ -32,5 +32,8 @@ class HomeController extends Controller {
 	{
 		return view('home');
 	}
+    public function teste(){
+        return oiee;
 
+    }
 }

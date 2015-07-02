@@ -1,5 +1,6 @@
 <?php namespace CodeCommerce\Http\Controllers;
 
+use CodeCommerce\Category;
 use CodeCommerce\Http\Requests;
 use CodeCommerce\Http\Controllers\Controller;
 
@@ -8,27 +9,33 @@ use Illuminate\Http\Request;
 
 class ProductsController extends Controller {
     private $productyModel;
+    private $category;
 
     public function __construct(Product $productyModel){
 
         $this->productyModel = $productyModel;
     }
     public function index(){
-        $products = $this->productyModel->all();
+        $products = $this->productyModel->paginate(10);
 
         return view('products.index',compact('products'));
 
     }
 
-    // AQUI E A PARTE DA VISÃO QUANDO A PESSOA ENTRA NO LINK SERÁ ENVIADO PARA PAGINA DE CRIAÇÃO
-    public function create(){
-        return view('products.create');
+    public function create(Category $category){
+        $categories = $category->lists('name','id');
+        return view('products.create', compact('categories'));
 
     }
 
-    public function edit($id){
+    // AQUI E A PARTE DA VISÃO QUANDO A PESSOA ENTRA NO LINK SERÁ ENVIADO PARA PAGINA DE CRIAÇÃO
+
+
+
+    public function edit($id, Category $category){
+        $categories = $category->lists('name','id');
         $product = $this->productyModel->find($id);
-        return view('products.edit',(compact('product')));
+        return view('products.edit',(compact('product','categories')));
     }
 
     public function update(Requests\ProductRequest $request, $id){
