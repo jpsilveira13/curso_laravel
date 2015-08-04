@@ -28,7 +28,11 @@
                     <td>{{$product->category->name}}</td>
                     <td>{{$product->featured}}</td>
                     <td>{{$product->recommend}}</td>
-                    <td><a href="{{route('products.destroy',['id'=>$product->id])}}">DELETE</a> | <a href="{{route('products.edit',['id'=>$product->id])}}">EDIT</a></td>
+                    <td>
+                        <a href="{{route('products.destroy',['id'=>$product->id])}}">DELETE</a>
+                        <a href="{{route('products.images',['id'=>$product->id])}}">IMAGES</a>
+                        <a href="{{route('products.edit',['id'=>$product->id])}}">EDIT</a>
+                    </td>
 
                 </tr>
             @endforeach
