@@ -57,8 +57,23 @@ class ProductsController extends Controller {
     }
 
     public function destroy($id){
-        $this->productyModel->find($id)->delete();
-        return redirect()->route('products');
+        $product = $this->productyModel->find($id);
+        if($product)
+        {
+            if($product->images)
+            {
+                foreach($product->images as $image){
+                    if(file_exists(public_path().'/uploads/'.$image->id.'.'.$image->extension))
+                    {
+                        Storage::disk('public_local')->delete($image->id.'.'.$image->extension);
+                    }
+                    $image->delete();
+                }
+            }
+            $product->delete();
+            return redirect()->route('products')->with('product_destroy', 'Product deleted!');
+        }
+        return redirect()->route('products')->with('product_exist', 'Product not exist!');
 
     }
 
