@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
 
-        <h1>Categories</h1>
+        <h1>Products</h1>
 
         <br />
         <a href="{{route('products.create')}}" class="btn btn-primary">Novo Produto</a>
@@ -17,6 +17,7 @@
                 <th>Category</th>
                 <th>Featured</th>
                 <th>Recomend</th>
+                <th>Tags</th>
                 <th>Action</th>
             </tr>
             @foreach($products as $product)
@@ -28,6 +29,9 @@
                     <td>{{$product->category->name}}</td>
                     <td>{{$product->featured}}</td>
                     <td>{{$product->recommend}}</td>
+
+                    <td></td>
+
                     <td>
                         <a href="{{route('products.destroy',['id'=>$product->id])}}">DELETE</a>
                         <a href="{{route('products.images',['id'=>$product->id])}}">IMAGES</a>

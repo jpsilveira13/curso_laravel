@@ -31,13 +31,6 @@ class Product extends Model {
 
     }
 
-   /* public function getNameDescriptionAttribute(){
-        return $this->name." - ".$this->description;
-
-    }
-
-   */
-
     public function scopeFeatured($query){
         return $query->where('featured','=','1');
 

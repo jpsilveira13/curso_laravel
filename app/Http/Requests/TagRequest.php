@@ -19,11 +19,21 @@ class TagRequest extends Request {
 	 *
 	 * @return array
 	 */
+
+
+
 	public function rules()
 	{
 		return [
-            'name' => "required|unique|max:100"
+            'name' => 'required|unique:tags,name'
 		];
 	}
+
+    public function messages(){
+        return[
+            'name.required' => "Nome não pode  ser vazio",
+            'name.unique' => "Nome não pode  ser repetido"
+        ];
+    }
 
 }

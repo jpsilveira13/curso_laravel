@@ -14,7 +14,15 @@ Route::group(['prefix'=> 'admin', 'where'=>['id'=>'[0-9]+']],function(){
         Route::get('{id}/edit',['as'=>'categories.edit','uses'=>'CategoriesController@edit']);
         Route::put('{id}/update',['as'=>'categories.update','uses'=>'CategoriesController@update']);
     });
+    Route::group(['prefix' => 'tags'],function(){
 
+        Route::get('/',['as'=>'tags', 'uses' => 'TagsController@index']);
+        Route::post('/',['as'=>'tags.store','uses'=> 'TagsController@store']);
+        Route::get('create',['as'=>'tags.create','uses'=>'TagsController@create']);
+        Route::get('{id}/destroy',['as'=>'tags.destroy','uses'=>'TagsController@destroy']);
+        Route::get('{id}/edit',['as'=>'tags.edit','uses'=>'TagsController@edit']);
+        Route::put('{id}/update',['as'=>'tags.update','uses'=>'TagsController@update']);
+    });
     Route::group(['prefix'=> 'products'],function(){
 
         Route::get('/',['as'=>'products', 'uses' => 'ProductsController@index']);

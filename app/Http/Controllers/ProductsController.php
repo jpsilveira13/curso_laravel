@@ -6,6 +6,7 @@ use CodeCommerce\Http\Controllers\Controller;
 
 use CodeCommerce\Product;
 use CodeCommerce\ProductImage;
+use CodeCommerce\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Storage;
 class ProductsController extends Controller {
     private $productyModel;
     private $category;
+    private $tag;
 
     public function __construct(Product $productyModel){
 
@@ -25,20 +27,25 @@ class ProductsController extends Controller {
 
     }
 
-    public function create(Category $category){
+    public function create(Category $category,Tag $tag){
         $categories = $category->lists('name','id');
-        return view('products.create', compact('categories'));
+        $tags = $tag->lists('name','id');
+        return view('products.create', compact('categories','tags'));
 
     }
+
+
+
 
     // AQUI E A PARTE DA VISÃO QUANDO A PESSOA ENTRA NO LINK SERÁ ENVIADO PARA PAGINA DE CRIAÇÃO
 
 
 
-    public function edit($id, Category $category){
+    public function edit($id, Category $category, Tag $tag){
         $categories = $category->lists('name','id');
+        $tags = $tag->lists('name','id');
         $product = $this->productyModel->find($id);
-        return view('products.edit',(compact('product','categories')));
+        return view('products.edit',(compact('product','categories','tags')));
     }
 
     public function update(Requests\ProductRequest $request, $id){
